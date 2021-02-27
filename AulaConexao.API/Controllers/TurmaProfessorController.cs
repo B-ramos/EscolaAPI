@@ -28,8 +28,7 @@ namespace AulaConexao.API.Controllers
         public IActionResult Get()
         {
             var turmaProfessores = repo.GetAll();
-            return Ok(_mapper.Map<IEnumerable<TurmaProfessorDto>>(turmaProfessores));
-            //return Ok(turmaProfessores);
+            return Ok(_mapper.Map<IEnumerable<TurmaProfessorDto>>(turmaProfessores));           
 
         }
 
@@ -41,8 +40,7 @@ namespace AulaConexao.API.Controllers
             if (turmaProfessor == null)
                 return BadRequest("TurmaProfessor não encontrado.");
 
-            //return Ok(_mapper.Map<TurmaProfessorDto>(TurmaProfessor));
-            return Ok(turmaProfessor);
+            return Ok(_mapper.Map<TurmaProfessorDto>(turmaProfessor));            
         }
 
         // POST api/<TurmaProfessorController>

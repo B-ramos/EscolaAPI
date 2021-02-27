@@ -39,7 +39,7 @@ namespace AulaConexao.API.Controllers
             if (turma == null)
                 return BadRequest("Turma não encontrado.");
 
-            return Ok(turma);
+            return Ok(_mapper.Map<TurmaDto>(turma));
         }
 
         // POST api/<TurmaController>

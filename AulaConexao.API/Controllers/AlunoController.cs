@@ -1,6 +1,9 @@
-﻿using AulaConexao.Data.Repository;
+﻿using AulaConexao.API.Dto;
+using AulaConexao.Data.Repository;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Models.AulaConexao.Domain;
+using System.Collections.Generic;
 
 namespace AulaConexao.API.Controllers
 {
@@ -9,10 +12,12 @@ namespace AulaConexao.API.Controllers
     public class AlunoController : ControllerBase
     {
         private readonly AlunoRepository repo;
+        private readonly IMapper _mapper;
 
-        public AlunoController()
+        public AlunoController(IMapper mapper)
         {
             repo = new AlunoRepository();
+            _mapper = mapper;
         }
         
 
@@ -21,7 +26,7 @@ namespace AulaConexao.API.Controllers
         public IActionResult Get()
         {
             var alunos = repo.GetAll();
-            return Ok(alunos);
+            return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));
         }
 
         // GET api/<AlunoController>/5
@@ -32,7 +37,7 @@ namespace AulaConexao.API.Controllers
             if (aluno == null)
                 return BadRequest("Aluno não encontrado.");
 
-            return Ok(aluno);
+            return Ok(_mapper.Map<AlunoDto>(aluno));
 
         }
 

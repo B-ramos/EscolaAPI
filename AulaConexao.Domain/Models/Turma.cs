@@ -9,7 +9,7 @@ namespace AulaConexao.Domain.Models
     {
         public Turma() { }
 
-        public Turma(int id, string nome, string descricao, Professor professor)
+        public Turma(int id, string nome, string descricao)
         {
             Id = id;
             Nome = nome;

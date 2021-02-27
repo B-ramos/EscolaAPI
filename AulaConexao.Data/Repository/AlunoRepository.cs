@@ -30,12 +30,7 @@ namespace AulaConexao.Data.Repository
         {
             IQueryable<Aluno> query = context.Alunos;
             return query.ToList();
-                //.Include(a => a.AlunosCursos)
-                //.ThenInclude(ac => ac.Curso)
-                //.ThenInclude(c => c.CursosDisciplinas)
-                //.ThenInclude(cd => cd.Disciplina)
-                //.ThenInclude(d => d.Professor)
-                //.ToList();           
+                          
         }
 
         public bool Update(int id, Aluno aluno)

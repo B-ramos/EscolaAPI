@@ -20,7 +20,9 @@ namespace AulaConexao.API.Helpers
                .ForMember(dest => dest.Aluno, opt => opt.MapFrom(src => src.Aluno.Nome))
                .ForMember(dest => dest.Turma, opt => opt.MapFrom(src => src.Turma.Nome));
 
-            CreateMap<Turma, TurmaDto>();              
+            CreateMap<Turma, TurmaDto>();
+            CreateMap<Aluno, AlunoDto>();
+
         }
     }
 }

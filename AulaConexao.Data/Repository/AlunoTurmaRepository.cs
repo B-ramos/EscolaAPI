@@ -23,7 +23,12 @@ namespace AulaConexao.Data.Repository
         public AlunoTurma GetById(int id)
         {
             IQueryable<AlunoTurma> query = context.AlunosTurmas;
-            return query.FirstOrDefault(a => a.Id == id);
+
+            var aluno = query.Include(at => at.Turma)
+                             .Include(at => at.Aluno)
+                             .ToList();
+
+            return aluno.FirstOrDefault(a => a.Id == id);
         }
 
         public List<AlunoTurma> GetAll()

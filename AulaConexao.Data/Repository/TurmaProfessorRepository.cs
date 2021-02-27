@@ -23,7 +23,12 @@ namespace AulaConexao.Data.Repository
         public TurmaProfessor GetById(int id)
         {
             IQueryable<TurmaProfessor> query = context.TurmasProfessores;
-            return query.FirstOrDefault(a => a.Id == id);
+
+            var turma = query.Include(tp => tp.Turma)
+                             .Include(tp => tp.Professor)
+                             .ToList();
+
+            return turma.FirstOrDefault(a => a.Id == id);
         }
 
         public List<TurmaProfessor> GetAll()

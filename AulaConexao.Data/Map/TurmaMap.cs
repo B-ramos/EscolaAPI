@@ -1,6 +1,7 @@
 ﻿using AulaConexao.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Collections.Generic;
 
 namespace AulaConexao.Data.Map
 {
@@ -17,7 +18,12 @@ namespace AulaConexao.Data.Map
                 .IsRequired();
 
             builder.Property(x => x.Descricao)
-                .HasColumnType("varchar(500)");                
+                .HasColumnType("varchar(500)");
+
+            builder.HasData(new List<Turma>() {
+                new Turma(1, "Asp.Net", "Curso Campinas Tech"),
+                new Turma(2, "React", "Curso Udemy")                
+            });
         }
     }
 }

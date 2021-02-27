@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AulaConexao.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210227005225_initial")]
-    partial class initial
+    [Migration("20210227012643_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,44 @@ namespace AulaConexao.Data.Migrations
                     b.HasIndex("TurmaId");
 
                     b.ToTable("AlunoTurma");
+
+                    b.HasData(
+                        new
+                        {
+                            AlunpId = 1,
+                            TurmaId = 1,
+                            Id = 1
+                        },
+                        new
+                        {
+                            AlunpId = 2,
+                            TurmaId = 1,
+                            Id = 2
+                        },
+                        new
+                        {
+                            AlunpId = 3,
+                            TurmaId = 1,
+                            Id = 3
+                        },
+                        new
+                        {
+                            AlunpId = 4,
+                            TurmaId = 2,
+                            Id = 4
+                        },
+                        new
+                        {
+                            AlunpId = 5,
+                            TurmaId = 2,
+                            Id = 5
+                        },
+                        new
+                        {
+                            AlunpId = 6,
+                            TurmaId = 2,
+                            Id = 6
+                        });
                 });
 
             modelBuilder.Entity("AulaConexao.Domain.Models.Turma", b =>
@@ -59,6 +97,20 @@ namespace AulaConexao.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Turma");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descricao = "Curso Campinas Tech",
+                            Nome = "Asp.Net"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descricao = "Curso Udemy",
+                            Nome = "React"
+                        });
                 });
 
             modelBuilder.Entity("AulaConexao.Domain.Models.TurmaProfessor", b =>
@@ -81,6 +133,32 @@ namespace AulaConexao.Data.Migrations
                     b.HasIndex("ProfessorId");
 
                     b.ToTable("TurmaProfessor");
+
+                    b.HasData(
+                        new
+                        {
+                            TurmaId = 1,
+                            ProfessorId = 1,
+                            Id = 1
+                        },
+                        new
+                        {
+                            TurmaId = 1,
+                            ProfessorId = 2,
+                            Id = 2
+                        },
+                        new
+                        {
+                            TurmaId = 2,
+                            ProfessorId = 3,
+                            Id = 3
+                        },
+                        new
+                        {
+                            TurmaId = 2,
+                            ProfessorId = 4,
+                            Id = 4
+                        });
                 });
 
             modelBuilder.Entity("Models.AulaConexao.Domain.Aluno", b =>
