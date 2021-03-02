@@ -1,5 +1,5 @@
 ﻿using AulaConexao.API.Dto;
-using AulaConexao.Data.Repository;
+using AulaConexao.Data.Interface;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Models.AulaConexao.Domain;
@@ -11,12 +11,12 @@ namespace AulaConexao.API.Controllers
     [ApiController]
     public class AlunoController : ControllerBase
     {
-        private readonly AlunoRepository repo;
+        private readonly IAlunoRepository __repo;
         private readonly IMapper _mapper;
 
-        public AlunoController(IMapper mapper)
+        public AlunoController(IAlunoRepository repo, IMapper mapper)
         {
-            repo = new AlunoRepository();
+            __repo = repo;
             _mapper = mapper;
         }
         
@@ -25,7 +25,7 @@ namespace AulaConexao.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var alunos = repo.GetAll();
+            var alunos = __repo.FindAll();
             return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));
         }
 
@@ -33,7 +33,7 @@ namespace AulaConexao.API.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var aluno = repo.GetById(id);
+            var aluno = __repo.FindById(id);
             if (aluno == null)
                 return BadRequest("Aluno não encontrado.");
 
@@ -45,31 +45,31 @@ namespace AulaConexao.API.Controllers
         [HttpPost]
         public IActionResult Post(Aluno aluno)
         {
-            repo.Post(aluno);
+            __repo.Create(aluno);
             return Ok(aluno);
         }
 
         // PUT api/<AlunoController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Aluno aluno)
+        public IActionResult Put(Aluno aluno)
         {
-            var resposta = repo.Update(id, aluno);
+            var resposta = __repo.Update(aluno);
 
-            if(resposta)
-                return Ok("Aluno alterado com sucesso.");
-
-            return BadRequest("Aluno não encontrado.");
+            if(resposta == null)
+                return BadRequest("Aluno não encontrado.");
+            
+            return Ok("Aluno alterado com sucesso.");
         }
 
         // DELETE api/<AlunoController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var aluno = repo.GetById(id);
+            var aluno = __repo.FindById(id);
 
             if (aluno == null) return BadRequest("O Aluno não foi encontrado");
 
-            repo.Delete(aluno);
+            __repo.Remove(aluno.Id);
 
             return Ok("Aluno deletado com sucesso.");
         }

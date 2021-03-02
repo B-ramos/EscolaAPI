@@ -1,19 +1,11 @@
-﻿using AulaConexao.Domain.Models;
-using System;
+﻿using AulaConexao.Domain.Base;
+using AulaConexao.Domain.Models;
 using System.Collections.Generic;
 
 namespace Models.AulaConexao.Domain
 {
-    public class Aluno
+    public class Aluno : BaseEntity
     {
-        public Aluno() { }
-        public Aluno(int id, string nome, bool ativo)
-        {
-            Id = id;
-            Nome = nome;
-            Ativo = ativo;
-        }
-
         public int Id { get; set; }
         public string Nome { get; set; }
         public bool Ativo { get; set; }

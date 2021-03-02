@@ -1,4 +1,5 @@
 ﻿using AulaConexao.API.Dto;
+using AulaConexao.Data.Interface;
 using AulaConexao.Data.Repository;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -12,13 +13,13 @@ namespace AulaConexao.API.Controllers
     [ApiController]
     public class ProfessorController : ControllerBase
     {
-        private readonly ProfessorRepository repo;
+        private readonly IProfessorRepository _repo;
         private readonly IMapper _mapper;
 
 
-        public ProfessorController(IMapper mapper)
+        public ProfessorController(IProfessorRepository repo, IMapper mapper)
         {
-            repo = new ProfessorRepository();
+            _repo = repo;
             _mapper = mapper;
         }
 
@@ -26,7 +27,7 @@ namespace AulaConexao.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var professores = repo.GetAll();
+            var professores = _repo.FindAll();
             return Ok(_mapper.Map<IEnumerable<ProfessorDto>>(professores));
             //return Ok(professores);
 
@@ -36,7 +37,7 @@ namespace AulaConexao.API.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var professor = repo.GetById(id);
+            var professor = _repo.FindById(id);
             if (professor == null)
                 return BadRequest("Professor não encontrado.");
 
@@ -48,31 +49,31 @@ namespace AulaConexao.API.Controllers
         [HttpPost]
         public IActionResult Post(Professor Professor)
         {
-            repo.Post(Professor);
+            _repo.Create(Professor);
             return Ok(Professor);
         }
 
         // PUT api/<ProfessorController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Professor professor)
+        public IActionResult Put(Professor professor)
         {
-            var resposta = repo.Update(id, professor);
+            var resposta = _repo.Update(professor);
 
-            if (resposta)
-                return Ok("Professor alterado com sucesso.");
+            if (resposta == null)
+                return BadRequest("Professor não encontrado.");
 
-            return BadRequest("Professor não encontrado.");
+            return Ok("Professor alterado com sucesso.");
         }
 
         // DELETE api/<ProfessorController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var professor = repo.GetById(id);
+            var professor = _repo.FindById(id);
 
             if (professor == null) return BadRequest("O Professor não foi encontrado");
 
-            repo.Delete(professor);
+            _repo.Remove(professor.Id);
 
             return Ok("Professor deletado com sucesso.");
         }

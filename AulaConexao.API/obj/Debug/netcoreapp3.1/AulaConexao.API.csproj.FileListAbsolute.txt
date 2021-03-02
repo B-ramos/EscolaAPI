@@ -1,11 +1,16 @@
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AulaConexao.API.exe
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AulaConexao.API.deps.json
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AulaConexao.API.runtimeconfig.json
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AulaConexao.API.runtimeconfig.dev.json
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AulaConexao.API.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AulaConexao.API.pdb
+C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -31,6 +36,7 @@ C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaCon
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
@@ -62,9 +68,4 @@ C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaCon
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\obj\Debug\netcoreapp3.1\AulaConexao.API.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\obj\Debug\netcoreapp3.1\AulaConexao.API.pdb
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\obj\Debug\netcoreapp3.1\AulaConexao.API.genruntimeconfig.cache
-C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
-C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\libman.json
-C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
-C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll

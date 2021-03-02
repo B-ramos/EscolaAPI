@@ -20,7 +20,7 @@ namespace AulaConexao.Data.Migrations
 
             modelBuilder.Entity("AulaConexao.Domain.Models.AlunoTurma", b =>
                 {
-                    b.Property<int>("AlunpId")
+                    b.Property<int>("AlunoId")
                         .HasColumnType("int");
 
                     b.Property<int>("TurmaId")
@@ -33,49 +33,11 @@ namespace AulaConexao.Data.Migrations
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasKey("AlunpId", "TurmaId");
+                    b.HasKey("AlunoId", "TurmaId");
 
                     b.HasIndex("TurmaId");
 
                     b.ToTable("AlunoTurma");
-
-                    b.HasData(
-                        new
-                        {
-                            AlunpId = 1,
-                            TurmaId = 1,
-                            Id = 1
-                        },
-                        new
-                        {
-                            AlunpId = 2,
-                            TurmaId = 1,
-                            Id = 2
-                        },
-                        new
-                        {
-                            AlunpId = 3,
-                            TurmaId = 1,
-                            Id = 3
-                        },
-                        new
-                        {
-                            AlunpId = 4,
-                            TurmaId = 2,
-                            Id = 4
-                        },
-                        new
-                        {
-                            AlunpId = 5,
-                            TurmaId = 2,
-                            Id = 5
-                        },
-                        new
-                        {
-                            AlunpId = 6,
-                            TurmaId = 2,
-                            Id = 6
-                        });
                 });
 
             modelBuilder.Entity("AulaConexao.Domain.Models.Turma", b =>
@@ -95,20 +57,6 @@ namespace AulaConexao.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Turma");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Descricao = "Curso Campinas Tech",
-                            Nome = "Asp.Net"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Descricao = "Curso Udemy",
-                            Nome = "React"
-                        });
                 });
 
             modelBuilder.Entity("AulaConexao.Domain.Models.TurmaProfessor", b =>
@@ -131,32 +79,6 @@ namespace AulaConexao.Data.Migrations
                     b.HasIndex("ProfessorId");
 
                     b.ToTable("TurmaProfessor");
-
-                    b.HasData(
-                        new
-                        {
-                            TurmaId = 1,
-                            ProfessorId = 1,
-                            Id = 1
-                        },
-                        new
-                        {
-                            TurmaId = 1,
-                            ProfessorId = 2,
-                            Id = 2
-                        },
-                        new
-                        {
-                            TurmaId = 2,
-                            ProfessorId = 3,
-                            Id = 3
-                        },
-                        new
-                        {
-                            TurmaId = 2,
-                            ProfessorId = 4,
-                            Id = 4
-                        });
                 });
 
             modelBuilder.Entity("Models.AulaConexao.Domain.Aluno", b =>
@@ -176,44 +98,6 @@ namespace AulaConexao.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Aluno");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Ativo = true,
-                            Nome = "Bruno"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Ativo = true,
-                            Nome = "Fabio"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Ativo = true,
-                            Nome = "Renata"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Ativo = true,
-                            Nome = "Camila"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Ativo = true,
-                            Nome = "Fernado"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Ativo = true,
-                            Nome = "Luan"
-                        });
                 });
 
             modelBuilder.Entity("Models.AulaConexao.Domain.Professor", b =>
@@ -238,43 +122,13 @@ namespace AulaConexao.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Professor");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "Ramos@.com",
-                            Nome = "Bruno",
-                            Turno = "Manha"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "Nako@.com",
-                            Nome = "Fabio",
-                            Turno = "Tarde"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "Laura@.com",
-                            Nome = "Renata",
-                            Turno = "Noite"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Email = "Farias@.com",
-                            Nome = "Camila",
-                            Turno = "Integral"
-                        });
                 });
 
             modelBuilder.Entity("AulaConexao.Domain.Models.AlunoTurma", b =>
                 {
                     b.HasOne("Models.AulaConexao.Domain.Aluno", "Aluno")
                         .WithMany("AlunosTurmas")
-                        .HasForeignKey("AlunpId")
+                        .HasForeignKey("AlunoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

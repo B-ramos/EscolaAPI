@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rrKWKar+WM49hndCAl87R3jOVDFcm68wD++IW3UvCuBF9HdKYHpqVeg7bvLbfCW8jeubIbTFhhB1aIDIt02LDA==",
+  "dgSpecHash": "g0YI5jKy0Ah/EULzZI5N7cOa+AEJLtLugZ9cY+Dm9Yec+IFD5lLyASIIDQCvTTNm0CVoHnxAY/ssCFr++x64ww==",
   "success": true,
   "projectFilePath": "C:\\Users\\bramo\\Área de Trabalho\\Desenvolvimento\\CampinasTech\\Exercicios\\AulaConexao.API\\AulaConexao.API\\AulaConexao.API.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\bramo\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.12\\microsoft.entityframeworkcore.3.1.12.nupkg.sha512",
     "C:\\Users\\bramo\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.12\\microsoft.entityframeworkcore.abstractions.3.1.12.nupkg.sha512",
     "C:\\Users\\bramo\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.12\\microsoft.entityframeworkcore.analyzers.3.1.12.nupkg.sha512",
+    "C:\\Users\\bramo\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.12\\microsoft.entityframeworkcore.design.3.1.12.nupkg.sha512",
     "C:\\Users\\bramo\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.12\\microsoft.entityframeworkcore.relational.3.1.12.nupkg.sha512",
     "C:\\Users\\bramo\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.12\\microsoft.entityframeworkcore.sqlserver.3.1.12.nupkg.sha512",
     "C:\\Users\\bramo\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.12\\microsoft.extensions.caching.abstractions.3.1.12.nupkg.sha512",

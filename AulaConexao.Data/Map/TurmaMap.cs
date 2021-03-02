@@ -20,10 +20,10 @@ namespace AulaConexao.Data.Map
             builder.Property(x => x.Descricao)
                 .HasColumnType("varchar(500)");
 
-            builder.HasData(new List<Turma>() {
-                new Turma(1, "Asp.Net", "Curso Campinas Tech"),
-                new Turma(2, "React", "Curso Udemy")                
-            });
+            //builder.HasData(new List<Turma>() {
+            //    new Turma(1, "Asp.Net", "Curso Campinas Tech"),
+            //    new Turma(2, "React", "Curso Udemy")                
+            //});
         }
     }
 }

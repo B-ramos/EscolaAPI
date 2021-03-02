@@ -1,4 +1,5 @@
 ﻿using AulaConexao.API.Dto;
+using AulaConexao.Data.Interface;
 using AulaConexao.Data.Repository;
 using AulaConexao.Domain.Models;
 using AutoMapper;
@@ -11,13 +12,13 @@ namespace AulaConexao.API.Controllers
     [ApiController]
     public class TurmaController : ControllerBase
     {
-        private readonly TurmaRepository repo;
+        private readonly ITurmaRepository _repo;
         private readonly IMapper _mapper;
 
 
-        public TurmaController(IMapper mapper)
+        public TurmaController(ITurmaRepository repo, IMapper mapper)
         {
-            repo = new TurmaRepository();
+            _repo = repo;
             _mapper = mapper;
         }
 
@@ -25,7 +26,7 @@ namespace AulaConexao.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var turmas = repo.GetAll();
+            var turmas = _repo.FindAll();
             //return Ok(turmas);
             return Ok(_mapper.Map<IEnumerable<TurmaDto>>(turmas));
 
@@ -35,7 +36,7 @@ namespace AulaConexao.API.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var turma = repo.GetById(id);
+            var turma = _repo.FindById(id);
             if (turma == null)
                 return BadRequest("Turma não encontrado.");
 
@@ -46,31 +47,31 @@ namespace AulaConexao.API.Controllers
         [HttpPost]
         public IActionResult Post(Turma turma)
         {
-            repo.Post(turma);
+            _repo.Create(turma);
             return Ok(turma);
         }
 
         // PUT api/<TurmaController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Turma turma)
+        public IActionResult Put(Turma turma)
         {
-            var resposta = repo.Update(id, turma);
+            var resposta = _repo.Update(turma);
 
-            if (resposta)
-                return Ok("Turma alterada com sucesso.");
+            if (resposta == null)
+                return BadRequest("Turma não encontrada.");
 
-            return BadRequest("Turma não encontrada.");
+            return Ok("Turma alterada com sucesso.");
         }
 
         // DELETE api/<TurmaController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var turma = repo.GetById(id);
+            var turma = _repo.FindById(id);
 
             if (turma == null) return BadRequest("O Turma não foi encontrada");
 
-            repo.Delete(turma);
+            _repo.Remove(turma.Id);
 
             return Ok("Turma deletada com sucesso.");
         }

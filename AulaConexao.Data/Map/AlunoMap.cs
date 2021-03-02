@@ -21,14 +21,14 @@ namespace AulaConexao.Data.Map
             builder.Property(x => x.Ativo)
                 .IsRequired();
 
-            builder.HasData(new List<Aluno>() {
-                new Aluno(1, "Bruno", true),
-                new Aluno(2, "Fabio", true),
-                new Aluno(3, "Renata", true),
-                new Aluno(4, "Camila", true),
-                new Aluno(5, "Fernado", true),
-                new Aluno(6, "Luan", true),
-            });
+            //builder.HasData(new List<Aluno>() {
+            //    new Aluno(1, "Bruno", true),
+            //    new Aluno(2, "Fabio", true),
+            //    new Aluno(3, "Renata", true),
+            //    new Aluno(4, "Camila", true),
+            //    new Aluno(5, "Fernado", true),
+            //    new Aluno(6, "Luan", true),
+            //});
             
 
             

@@ -1,21 +1,13 @@
-﻿using Models.AulaConexao.Domain;
+﻿using AulaConexao.Domain.Base;
+using Models.AulaConexao.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AulaConexao.Domain.Models
 {
-    public class Turma
+    public class Turma : BaseEntity
     {
-        public Turma() { }
-
-        public Turma(int id, string nome, string descricao)
-        {
-            Id = id;
-            Nome = nome;
-            Descricao = descricao;            
-        }
-
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }

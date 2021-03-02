@@ -1,9 +1,9 @@
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\bin\Debug\netcoreapp3.1\AulaConexao.Domain.deps.json
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\bin\Debug\netcoreapp3.1\AulaConexao.Domain.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\bin\Debug\netcoreapp3.1\AulaConexao.Domain.pdb
-C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\obj\Debug\netcoreapp3.1\AulaConexao.Domain.csprojAssemblyReference.cache
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\obj\Debug\netcoreapp3.1\AulaConexao.Domain.AssemblyInfoInputs.cache
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\obj\Debug\netcoreapp3.1\AulaConexao.Domain.AssemblyInfo.cs
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\obj\Debug\netcoreapp3.1\AulaConexao.Domain.csproj.CoreCompileInputs.cache
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\obj\Debug\netcoreapp3.1\AulaConexao.Domain.dll
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\obj\Debug\netcoreapp3.1\AulaConexao.Domain.pdb
+C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.Domain\obj\Debug\netcoreapp3.1\AulaConexao.Domain.csprojAssemblyReference.cache

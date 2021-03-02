@@ -24,12 +24,12 @@ namespace AulaConexao.Data.Map
             builder.Property(x => x.Id)
                 .UseIdentityColumn();
 
-            builder.HasData(new List<TurmaProfessor>() {
-                new TurmaProfessor(1, 1, 1),
-                new TurmaProfessor(2, 1, 2),
-                new TurmaProfessor(3, 2, 3),
-                new TurmaProfessor(4, 2, 4),                
-            });
+            //builder.HasData(new List<TurmaProfessor>() {
+            //    new TurmaProfessor(1, 1, 1),
+            //    new TurmaProfessor(2, 1, 2),
+            //    new TurmaProfessor(3, 2, 3),
+            //    new TurmaProfessor(4, 2, 4),                
+            //});
         }
     }
 }

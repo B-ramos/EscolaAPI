@@ -1,21 +1,13 @@
-﻿using AulaConexao.Domain.Models;
+﻿using AulaConexao.Domain.Base;
+using AulaConexao.Domain.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 
 
 namespace Models.AulaConexao.Domain
 {
-    public class Professor
+    public class Professor : BaseEntity
     {
-        public Professor() { }
-        public Professor(int id, string nome, string email, int idTurno)
-        {
-            Id = id;
-            Nome = nome;
-            Email = email;
-            Turno =  (Turnos)idTurno;
-        }
-
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }

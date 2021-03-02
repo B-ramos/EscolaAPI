@@ -2,7 +2,7 @@
 
 namespace AulaConexao.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,17 +53,17 @@ namespace AulaConexao.Data.Migrations
                 name: "AlunoTurma",
                 columns: table => new
                 {
-                    AlunpId = table.Column<int>(nullable: false),
+                    AlunoId = table.Column<int>(nullable: false),
                     TurmaId = table.Column<int>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AlunoTurma", x => new { x.AlunpId, x.TurmaId });
+                    table.PrimaryKey("PK_AlunoTurma", x => new { x.AlunoId, x.TurmaId });
                     table.ForeignKey(
-                        name: "FK_AlunoTurma_Aluno_AlunpId",
-                        column: x => x.AlunpId,
+                        name: "FK_AlunoTurma_Aluno_AlunoId",
+                        column: x => x.AlunoId,
                         principalTable: "Aluno",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -99,63 +99,6 @@ namespace AulaConexao.Data.Migrations
                         principalTable: "Turma",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Aluno",
-                columns: new[] { "Id", "Ativo", "Nome" },
-                values: new object[,]
-                {
-                    { 1, true, "Bruno" },
-                    { 2, true, "Fabio" },
-                    { 3, true, "Renata" },
-                    { 4, true, "Camila" },
-                    { 5, true, "Fernado" },
-                    { 6, true, "Luan" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Professor",
-                columns: new[] { "Id", "Email", "Nome", "Turno" },
-                values: new object[,]
-                {
-                    { 1, "Ramos@.com", "Bruno", "Manha" },
-                    { 2, "Nako@.com", "Fabio", "Tarde" },
-                    { 3, "Laura@.com", "Renata", "Noite" },
-                    { 4, "Farias@.com", "Camila", "Integral" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Turma",
-                columns: new[] { "Id", "Descricao", "Nome" },
-                values: new object[,]
-                {
-                    { 1, "Curso Campinas Tech", "Asp.Net" },
-                    { 2, "Curso Udemy", "React" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AlunoTurma",
-                columns: new[] { "AlunpId", "TurmaId", "Id" },
-                values: new object[,]
-                {
-                    { 1, 1, 1 },
-                    { 2, 1, 2 },
-                    { 3, 1, 3 },
-                    { 4, 2, 4 },
-                    { 5, 2, 5 },
-                    { 6, 2, 6 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "TurmaProfessor",
-                columns: new[] { "TurmaId", "ProfessorId", "Id" },
-                values: new object[,]
-                {
-                    { 1, 1, 1 },
-                    { 1, 2, 2 },
-                    { 2, 3, 3 },
-                    { 2, 4, 4 }
                 });
 
             migrationBuilder.CreateIndex(
