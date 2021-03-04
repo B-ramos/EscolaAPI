@@ -22,24 +22,60 @@ namespace AulaConexao.API.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/<AlunoTurmaController>
+        /// <summary>
+        /// Retorna uma lista com os aluno e o curso que ele está participando.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Get /api/AlunoTurma
+        /// </remarks>
+        /// <response code="200">Retorna a lista de alunos.</response>
+        /// <response code="500">Exceção.</response>
+        [HttpGet]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         [HttpGet]
         public IActionResult Get()
-        {
-            var alunosTurmas = _repo.GetAll();
-            return Ok(_mapper.Map<IEnumerable<AlunoTurmaDto>>(alunosTurmas));           
-
+        {            
+            try
+            {
+                var alunosTurmas = _repo.GetAll();
+                return Ok(_mapper.Map<IEnumerable<AlunoTurmaDto>>(alunosTurmas));
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // GET api/<AlunoTurmaController>/5
+        /// <summary>
+        /// Retorna lista de AlunoTurmas por Id do Aluno.
+        /// </summary>
+        /// <param name="id">Identificador do aluno.</param>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Get /api/AlunoTurma/1
+        /// </remarks>
+        /// <response code="200">Retorna as turmas referente ao Id do aluno.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var alunosTurmas = _repo.FindById(id);
-            if (alunosTurmas == null)
-                return BadRequest("AlunoTurma não encontrado.");
+            try
+            {
+                var alunosTurmas = _repo.GetByIdAluno(id);
+                if (alunosTurmas.Count < 1)
+                    return BadRequest("Aluno não encontrado.");
 
-            return Ok(_mapper.Map<AlunoTurmaDto>(alunosTurmas));            
+                return Ok(_mapper.Map<IEnumerable<AlunoTurmaDto>>(alunosTurmas));
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
+                      
         }
 
         // POST api/<AlunoTurmaController>

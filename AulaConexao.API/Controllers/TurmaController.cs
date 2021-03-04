@@ -22,58 +22,170 @@ namespace AulaConexao.API.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/<TurmaController>
+
+        /// <summary>
+        /// Retorna uma lista de Turmas.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Get /api/turma/
+        /// </remarks>
+        /// <response code="200">Retorna a lista de turmas.</response>
+        /// <response code="204">Não encontrou nenhuma turma.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(500)]
         [HttpGet]
         public IActionResult Get()
         {
-            var turmas = _repo.FindAll();
-            //return Ok(turmas);
-            return Ok(_mapper.Map<IEnumerable<TurmaDto>>(turmas));
+            try
+            {
+                var turmas = _repo.FindAll();
 
+                if (turmas.Count < 1)
+                    return NoContent();
+
+                return Ok(_mapper.Map<IEnumerable<TurmaDto>>(turmas));
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // GET api/<TurmaController>/5
+
+        /// <summary>
+        /// Retorna uma  Turma pelo seu Id.
+        /// </summary>
+        /// /// <param name="id">Identificador da Turma.</param>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Get /api/turma/1
+        /// </remarks>
+        /// <response code="200">Retorna uma turma pelo seu Id.</response>
+        /// <response code="204">Turma não foi encontrado.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(500)]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var turma = _repo.FindById(id);
-            if (turma == null)
-                return BadRequest("Turma não encontrado.");
+            try
+            {
+                var turma = _repo.FindById(id);
+                if (turma == null)
+                    return NoContent();
 
-            return Ok(_mapper.Map<TurmaDto>(turma));
+                return Ok(_mapper.Map<TurmaDto>(turma));
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // POST api/<TurmaController>
+        /// <summary>
+        /// Cria um novo Turma e retorna o mesmo.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Post /api/turma
+        ///     
+        ///         {
+        ///             "nome" : "nomeTurma",
+        ///             "descricao" : "Turma de c#"
+        ///         }
+        /// </remarks>
+        /// <response code="201">Cria um nova turma e retorna a mesma.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(500)]
         [HttpPost]
         public IActionResult Post(Turma turma)
         {
-            _repo.Create(turma);
-            return Ok(turma);
+            try
+            {
+                _repo.Create(turma);
+                return Created("", turma);
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // PUT api/<TurmaController>/5
+        /// <summary>
+        /// Altera uma  Turma.
+        /// </summary>
+        /// <param name="turma">Identificador da Turma.</param>
+        /// <remarks>
+        /// Exemplo de request:        
+        ///     Put /api/turma/1
+        ///     
+        ///         {
+        ///             "id": 1,
+        ///             "nome" : "nomeTurma",
+        ///             "descricao" : "alteraDescricao"
+        ///         }
+        /// </remarks>
+        /// <response code="201">Retorna a turma alterado</response>
+        /// <response code="204">Turma não foi encontrado.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(500)]
         [HttpPut("{id}")]
         public IActionResult Put(Turma turma)
         {
-            var resposta = _repo.Update(turma);
+            try
+            {
+                var resposta = _repo.Update(turma);
 
-            if (resposta == null)
-                return BadRequest("Turma não encontrada.");
+                if (resposta == null)
+                    return NoContent();
 
-            return Ok("Turma alterada com sucesso.");
+                return Created("Turma alterado com sucesso.", turma);
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // DELETE api/<TurmaController>/5
+        /// <summary>
+        /// Deleta uma Turma pelo Id.
+        /// </summary>
+        /// /// <param name="id">Identificador da Turma.</param>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Delete /api/turma/1        
+        ///       
+        /// </remarks>
+        /// <response code="200">A turma foi removido com sucesso.</response>
+        /// <response code="204">Turma não foi encontrado.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(500)]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var turma = _repo.FindById(id);
+            try
+            {
+                var turma = _repo.FindById(id);
 
-            if (turma == null) return BadRequest("O Turma não foi encontrada");
+                if (turma == null) return NoContent();
 
-            _repo.Remove(turma.Id);
+                _repo.Remove(turma.Id);
 
-            return Ok("Turma deletada com sucesso.");
+                return Ok("Turma deletado com sucesso.");
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
     }
 }

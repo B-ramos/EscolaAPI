@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AulaConexao.API</name>
+    </assembly>
+    <members>
+        <member name="M:AulaConexao.API.Controllers.AlunoController.Get">
+            <summary>
+            Retorna uma lista de Alunos.
+            </summary>
+            <remarks>
+            Exemplo de request:
+                Get /api/aluno
+            </remarks>
+            <response code="200">Retorna a lista de alunos.</response>
+            <response code="204">Não encontrou nenhum aluno.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.AlunoController.Get(System.Int32)">
+            <summary>
+            Retorna um  Aluno pelo seu Id.
+            </summary>
+            /// <param name="id">Identificador do Aluno.</param>
+            <remarks>
+            Exemplo de request:
+                Get /api/aluno/1
+            </remarks>
+            <response code="200">Retorna um aluno pelo seu Id.</response>
+            <response code="204">Aluno não foi encontrado.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.AlunoController.Post(Models.AulaConexao.Domain.Aluno)">
+            <summary>
+            Cria um novo Aluno e retorna o mesmo.
+            </summary>
+            <remarks>
+            Exemplo de request:
+                Post /api/aluno
+                
+                    {
+                        "nome" : "nomeAluno",
+                        "ativo" : true
+                    }
+            </remarks>
+            <response code="201">Cria um novo aluno e retorna o mesmo.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.AlunoController.Put(Models.AulaConexao.Domain.Aluno)">
+            <summary>
+            Altera um  Aluno.
+            </summary>
+            <param name="aluno">Identificador do Aluno.</param>
+            <remarks>
+            Exemplo de request:        
+                Put /api/aluno/1
+                
+                    {
+                        "id": 1,
+                        "nome" : "nomeAluno",
+                        "ativo" : true
+                    }
+            </remarks>
+            <response code="201">Retorna o aluno alterado.</response>
+            <response code="204">Aluno não foi encontrado.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.AlunoController.Delete(System.Int32)">
+            <summary>
+            Deleta um  Aluno pelo Id.
+            </summary>
+            /// <param name="id">Identificador do Aluno.</param>
+            <remarks>
+            Exemplo de request:
+                Delete /api/aluno/1        
+                  
+            </remarks>
+            <response code="200">O aluno foi removido com sucesso.</response>
+            <response code="204">Aluno não foi encontrado.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.AlunoTurmaController.Get">
+            <summary>
+            Retorna uma lista com os aluno e o curso que ele está participando.
+            </summary>
+            <remarks>
+            Exemplo de request:
+                Get /api/AlunoTurma
+            </remarks>
+            <response code="200">Retorna a lista de alunos.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.AlunoTurmaController.Get(System.Int32)">
+            <summary>
+            Retorna lista de AlunoTurmas por Id do Aluno.
+            </summary>
+            <param name="id">Identificador do aluno.</param>
+            <remarks>
+            Exemplo de request:
+                Get /api/AlunoTurma/1
+            </remarks>
+            <response code="200">Retorna as turmas referente ao Id do aluno.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.ProfessorController.Get">
+            <summary>
+            Retorna uma lista de Professores.
+            </summary>
+            <remarks>
+            Exemplo de request:
+                Get /api/professor
+            </remarks>
+            <response code="200">Retorna a lista de professores.</response>
+            <response code="204">Não encontrou nenhum professor.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.ProfessorController.Get(System.Int32)">
+            <summary>
+            Retorna um  Professor pelo seu Id.
+            </summary>
+            /// <param name="id">Identificador do Professor.</param>
+            <remarks>
+            Exemplo de request:
+                Get /api/professor/1
+            </remarks>
+            <response code="200">Retorna um professor pelo seu Id.</response>
+            <response code="204">Professor não foi encontrado.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.ProfessorController.Post(Models.AulaConexao.Domain.Professor)">
+            <summary>
+            Cria um novo Professor e retorna o mesmo.
+            </summary>
+            <remarks>
+            Exemplo de request:        
+                Post /api/professor
+            
+                    {
+                        "nome" : "nomeProfessor",
+                        "email" : "professor@email.com",
+                        "turno" : 1
+                    }
+                    
+                Referência para Turnos - 1: Manha, 2: Tarde, 3: Noite, 4: Integral        
+            </remarks>        
+            <response code="201">Cria um novo professor e retorna o mesmo.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.ProfessorController.Put(Models.AulaConexao.Domain.Professor)">
+            <summary>
+            Altera um  Professor.
+            </summary>
+            <param name="professor">Identificador do Professor.</param>
+            <remarks>
+            Exemplo de request:
+                Put /api/professor/1
+                {
+                    "id": 1,
+                    "nome" : "nomeProfessor",
+                    "ativo" : true
+                }
+            </remarks>
+            <response code="201">Retorna o professor alterado.</response>
+            <response code="204">Professor não foi encontrado.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.ProfessorController.Delete(System.Int32)">
+            <summary>
+            Deleta um  Professor pelo Id.
+            </summary>
+            /// <param name="id">Identificador do Professor.</param>
+            <remarks>
+            Exemplo de request:
+                Delete /api/professor/1        
+                  
+            </remarks>
+            <response code="200">O professor foi removido com sucesso.</response>
+            <response code="204">Professor não foi encontrado.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.TurmaController.Get">
+            <summary>
+            Retorna uma lista de Turmas.
+            </summary>
+            <remarks>
+            Exemplo de request:
+                Get /api/turma/
+            </remarks>
+            <response code="200">Retorna a lista de turmas.</response>
+            <response code="204">Não encontrou nenhuma turma.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.TurmaController.Get(System.Int32)">
+            <summary>
+            Retorna uma  Turma pelo seu Id.
+            </summary>
+            /// <param name="id">Identificador da Turma.</param>
+            <remarks>
+            Exemplo de request:
+                Get /api/turma/1
+            </remarks>
+            <response code="200">Retorna uma turma pelo seu Id.</response>
+            <response code="204">Turma não foi encontrado.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.TurmaController.Post(AulaConexao.Domain.Models.Turma)">
+            <summary>
+            Cria um novo Turma e retorna o mesmo.
+            </summary>
+            <remarks>
+            Exemplo de request:
+                Post /api/turma
+                
+                    {
+                        "nome" : "nomeTurma",
+                        "descricao" : "Turma de c#"
+                    }
+            </remarks>
+            <response code="201">Cria um nova turma e retorna a mesma.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.TurmaController.Put(AulaConexao.Domain.Models.Turma)">
+            <summary>
+            Altera uma  Turma.
+            </summary>
+            <param name="turma">Identificador da Turma.</param>
+            <remarks>
+            Exemplo de request:        
+                Put /api/turma/1
+                
+                    {
+                        "id": 1,
+                        "nome" : "nomeTurma",
+                        "descricao" : "alteraDescricao"
+                    }
+            </remarks>
+            <response code="201">Retorna a turma alterado</response>
+            <response code="204">Turma não foi encontrado.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.TurmaController.Delete(System.Int32)">
+            <summary>
+            Deleta uma Turma pelo Id.
+            </summary>
+            /// <param name="id">Identificador da Turma.</param>
+            <remarks>
+            Exemplo de request:
+                Delete /api/turma/1        
+                  
+            </remarks>
+            <response code="200">A turma foi removido com sucesso.</response>
+            <response code="204">Turma não foi encontrado.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.TurmaProfessorController.Get">
+            <summary>
+            Retorna uma lista de TurmasProfessores.
+            </summary>
+            <remarks>
+            Exemplo de request:
+                Get /api/TurmaProfessor
+            </remarks>
+            <response code="200">Retorna a lista com as turmas e professores.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.TurmaProfessorController.Get(System.Int32)">
+            <summary>
+            Retorna lista de TurmaProfessor por Id do professor.
+            </summary>
+            <param name="id">Identificador do professor.</param>
+            <remarks>
+            Exemplo de request:
+                Get /api/turmaprofessor/1
+            </remarks>
+            <response code="200">Retorna as turmas referente ao Id do aluno.</response>
+            <response code="500">Exceção.</response>
+        </member>
+    </members>
+</doc>

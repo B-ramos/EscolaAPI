@@ -22,16 +22,17 @@ namespace AulaConexao.Data.Repository
                 .ToList();
         }
 
-        //public TurmaProfessor GetById(int id)
-        //{
-        //    IQueryable<TurmaProfessor> query = context.TurmasProfessores;
+        public List<TurmaProfessor> GetByIdProfessor(int id)
+        {
+            IQueryable<TurmaProfessor> query = _context.TurmasProfessores;
 
-        //    var turma = query.Include(tp => tp.Turma)
-        //                     .Include(tp => tp.Professor)
-        //                     .ToList();
+            var turmaProfessor = query.Include(tp => tp.Turma)
+                             .Include(tp => tp.Professor)
+                             .Where(tp => tp.ProfessorId == id)
+                             .ToList();
 
-        //    return turma.FirstOrDefault(a => a.Id == id);
-        //}
+            return turmaProfessor;
+        }
 
 
 

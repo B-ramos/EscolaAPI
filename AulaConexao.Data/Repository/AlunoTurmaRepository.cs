@@ -22,27 +22,19 @@ namespace AulaConexao.Data.Repository
 
         }
 
-        //public AlunoTurma GetById(int id)
-        //{
-        //    IQueryable<AlunoTurma> query = context.AlunosTurmas;
+        public List<AlunoTurma> GetByIdAluno(int id)
+        {
+            IQueryable<AlunoTurma> query = _context.AlunosTurmas;
 
-        //    var aluno = query.Include(at => at.Turma)
-        //                     .Include(at => at.Aluno)
-        //                     .ToList();
+            var alunoTurma = query.Include(at => at.Turma)
+                             .Include(at => at.Aluno)
+                             .Where(at => at.AlunoId == id)
+                             .ToList();
 
-        //    return aluno.FirstOrDefault(a => a.Id == id);
-        //}
+            return alunoTurma;
+        }
 
-        //public List<AlunoTurma> GetAll()
-        //{
-        //    IQueryable<AlunoTurma> query = context.AlunosTurmas;
-
-        //    return query
-        //        .Include(at => at.Aluno)
-        //        .Include(at => at.Turma)
-        //        .ToList();
-
-        //}
+        
 
     }
 }

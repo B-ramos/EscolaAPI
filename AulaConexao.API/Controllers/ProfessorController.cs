@@ -23,59 +23,172 @@ namespace AulaConexao.API.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/<ProfessorController>
+        /// <summary>
+        /// Retorna uma lista de Professores.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Get /api/professor
+        /// </remarks>
+        /// <response code="200">Retorna a lista de professores.</response>
+        /// <response code="204">Não encontrou nenhum professor.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(500)]
         [HttpGet]
         public IActionResult Get()
         {
-            var professores = _repo.FindAll();
-            return Ok(_mapper.Map<IEnumerable<ProfessorDto>>(professores));
-            //return Ok(professores);
+            try
+            {
+                var professores = _repo.FindAll();
 
+                if (professores.Count < 1)
+                    return NoContent();
+
+                return Ok(_mapper.Map<IEnumerable<ProfessorDto>>(professores));
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // GET api/<ProfessorController>/5
+
+        /// <summary>
+        /// Retorna um  Professor pelo seu Id.
+        /// </summary>
+        /// /// <param name="id">Identificador do Professor.</param>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Get /api/professor/1
+        /// </remarks>
+        /// <response code="200">Retorna um professor pelo seu Id.</response>
+        /// <response code="204">Professor não foi encontrado.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(500)]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var professor = _repo.FindById(id);
-            if (professor == null)
-                return BadRequest("Professor não encontrado.");
+            try
+            {
+                var professor = _repo.FindById(id);
+                if (professor == null)
+                    return NoContent();
 
-            return Ok(_mapper.Map<ProfessorDto>(professor));
-
+                return Ok(_mapper.Map<ProfessorDto>(professor));
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // POST api/<ProfessorController>
+        /// <summary>
+        /// Cria um novo Professor e retorna o mesmo.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:        
+        ///     Post /api/professor
+        /// 
+        ///         {
+        ///             "nome" : "nomeProfessor",
+        ///             "email" : "professor@email.com",
+        ///             "turno" : 1
+        ///         }
+        ///         
+        ///     Referência para Turnos - 1: Manha, 2: Tarde, 3: Noite, 4: Integral        
+        /// </remarks>        
+        /// <response code="201">Cria um novo professor e retorna o mesmo.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(500)]
         [HttpPost]
-        public IActionResult Post(Professor Professor)
+        public IActionResult Post(Professor professor)
         {
-            _repo.Create(Professor);
-            return Ok(Professor);
+            try
+            {
+                _repo.Create(professor);
+                return Created("", professor);
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // PUT api/<ProfessorController>/5
+        /// <summary>
+        /// Altera um  Professor.
+        /// </summary>
+        /// <param name="professor">Identificador do Professor.</param>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Put /api/professor/1
+        ///     {
+        ///         "id": 1,
+        ///         "nome" : "nomeProfessor",
+        ///         "ativo" : true
+        ///     }
+        /// </remarks>
+        /// <response code="201">Retorna o professor alterado.</response>
+        /// <response code="204">Professor não foi encontrado.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(500)]
         [HttpPut("{id}")]
         public IActionResult Put(Professor professor)
         {
-            var resposta = _repo.Update(professor);
+            try
+            {
+                var resposta = _repo.Update(professor);
 
-            if (resposta == null)
-                return BadRequest("Professor não encontrado.");
+                if (resposta == null)
+                    return NoContent();
 
-            return Ok("Professor alterado com sucesso.");
+                return Created("Professor alterado com sucesso.", professor);
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // DELETE api/<ProfessorController>/5
+        /// <summary>
+        /// Deleta um  Professor pelo Id.
+        /// </summary>
+        /// /// <param name="id">Identificador do Professor.</param>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Delete /api/professor/1        
+        ///       
+        /// </remarks>
+        /// <response code="200">O professor foi removido com sucesso.</response>
+        /// <response code="204">Professor não foi encontrado.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(500)]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var professor = _repo.FindById(id);
+            try
+            {
+                var professor = _repo.FindById(id);
 
-            if (professor == null) return BadRequest("O Professor não foi encontrado");
+                if (professor == null) return NoContent();
 
-            _repo.Remove(professor.Id);
+                _repo.Remove(professor.Id);
 
-            return Ok("Professor deletado com sucesso.");
+                return Ok("Professor deletado com sucesso.");
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
+
     }
 }

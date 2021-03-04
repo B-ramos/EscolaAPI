@@ -24,24 +24,60 @@ namespace AulaConexao.API.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/<TurmaProfessorController>
+        /// <summary>
+        /// Retorna uma lista de TurmasProfessores.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Get /api/TurmaProfessor
+        /// </remarks>
+        /// <response code="200">Retorna a lista com as turmas e professores.</response>
+        /// <response code="500">Exceção.</response>
+        [HttpGet]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         [HttpGet]
         public IActionResult Get()
-        {
-            var turmaProfessores = _repo.GetAll();
-            return Ok(_mapper.Map<IEnumerable<TurmaProfessorDto>>(turmaProfessores));           
+        {            
+            try
+            {
+                var turmaProfessores = _repo.GetAll();
+                return Ok(_mapper.Map<IEnumerable<TurmaProfessorDto>>(turmaProfessores));
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
 
         }
 
-        // GET api/<TurmaProfessorController>/5
+        /// <summary>
+        /// Retorna lista de TurmaProfessor por Id do professor.
+        /// </summary>
+        /// <param name="id">Identificador do professor.</param>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Get /api/turmaprofessor/1
+        /// </remarks>
+        /// <response code="200">Retorna as turmas referente ao Id do aluno.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
-        {
-            var turmaProfessor = _repo.FindById(id);
-            if (turmaProfessor == null)
-                return BadRequest("TurmaProfessor não encontrado.");
+        {            
+            try
+            {
+                var turmaProfessor = _repo.GetByIdProfessor(id);
+                if (turmaProfessor.Count < 1)
+                    return BadRequest("professor não encontrado.");
 
-            return Ok(_mapper.Map<TurmaProfessorDto>(turmaProfessor));            
+                return Ok(_mapper.Map<IEnumerable<TurmaProfessorDto>>(turmaProfessor));
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
         // POST api/<TurmaProfessorController>

@@ -8,5 +8,6 @@ namespace AulaConexao.Data.Interface
     public interface ITurmaProfessorRepository : IBaseRepository<TurmaProfessor>
     {
         public List<TurmaProfessor> GetAll();
+        public List<TurmaProfessor> GetByIdProfessor(int id);
     }
 }

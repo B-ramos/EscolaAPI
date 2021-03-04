@@ -8,7 +8,7 @@ namespace AulaConexao.Data.Interface
     public interface IAlunoTurmaRepository : IBaseRepository<AlunoTurma>
     {
         public List<AlunoTurma> GetAll();
-
+        public List<AlunoTurma> GetByIdAluno(int id);
 
     }
 }
