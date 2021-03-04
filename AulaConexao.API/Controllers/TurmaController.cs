@@ -108,7 +108,7 @@ namespace AulaConexao.API.Controllers
             try
             {
                 _repo.Create(turma);
-                return Created("", turma);
+                return Created($"https://localhost:44308/api/turma/{turma.Id}", turma);
             }
             catch (System.Exception)
             {

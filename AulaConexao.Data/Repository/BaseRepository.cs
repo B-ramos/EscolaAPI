@@ -23,12 +23,12 @@ namespace SalaoCampinasTech.Data.Repository
             return _context.Set<T>().ToList();
         }
 
-        public T FindById(int id)
+        public virtual T FindById(int id)
         {
             return dataset.FirstOrDefault(x => x.Id.Equals(id));
         }
 
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             dataset.Add(entity);
             _context.SaveChanges();
@@ -46,7 +46,7 @@ namespace SalaoCampinasTech.Data.Repository
             return entity;
         }
 
-        public void Remove(int id)
+        public virtual void Remove(int id)
         {
             var entity = FindById(id);
             dataset.Remove(entity);

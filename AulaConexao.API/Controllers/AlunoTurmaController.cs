@@ -12,13 +12,20 @@ namespace AulaConexao.API.Controllers
     [ApiController]
     public class AlunoTurmaController : ControllerBase
     {
+        private readonly IAlunoRepository _repoAluno;
         private readonly IAlunoTurmaRepository _repo;
+        private readonly ITurmaRepository _repoTurma;
         private readonly IMapper _mapper;
 
 
-        public AlunoTurmaController(IAlunoTurmaRepository repo, IMapper mapper)
+        public AlunoTurmaController(IAlunoTurmaRepository repo, 
+                                    IAlunoRepository repoAluno, 
+                                    ITurmaRepository repoTurma,
+                                    IMapper mapper)
         {
             _repo = repo;
+            _repoAluno = repoAluno;
+            _repoTurma = repoTurma;
             _mapper = mapper;
         }
 
@@ -29,17 +36,23 @@ namespace AulaConexao.API.Controllers
         /// Exemplo de request:
         ///     Get /api/AlunoTurma
         /// </remarks>
-        /// <response code="200">Retorna a lista de alunos.</response>
+        /// <response code="200">Retorna uma lista com aluno e o curso que ele está participando.</response>
+        /// <response code="204">Lista vazia.</response>
         /// <response code="500">Exceção.</response>
         [HttpGet]
         [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [HttpGet]
         public IActionResult Get()
         {            
             try
             {
-                var alunosTurmas = _repo.GetAll();
+                var alunosTurmas = _repo.FindAll();
+
+                if (alunosTurmas.Count < 1)
+                    return NoContent();
+
                 return Ok(_mapper.Map<IEnumerable<AlunoTurmaDto>>(alunosTurmas));
             }
             catch (System.Exception)
@@ -57,17 +70,20 @@ namespace AulaConexao.API.Controllers
         ///     Get /api/AlunoTurma/1
         /// </remarks>
         /// <response code="200">Retorna as turmas referente ao Id do aluno.</response>
+        /// <response code="204">Aluno não existe.</response>
         /// <response code="500">Exceção.</response>
         [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(500)]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             try
             {
-                var alunosTurmas = _repo.GetByIdAluno(id);
+                var alunosTurmas = _repo.FindByIdAluno(id);
+
                 if (alunosTurmas.Count < 1)
-                    return BadRequest("Aluno não encontrado.");
+                    return NoContent();
 
                 return Ok(_mapper.Map<IEnumerable<AlunoTurmaDto>>(alunosTurmas));
             }
@@ -78,37 +94,104 @@ namespace AulaConexao.API.Controllers
                       
         }
 
-        // POST api/<AlunoTurmaController>
+        /// <summary>
+        /// Inclui o aluno no curso.
+        /// </summary>
+        /// /// /// <param name="alunosTurmas">Identificador do Professor.</param>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Post /api/aluno
+        ///     
+        ///         {
+        ///             "alunoID" : 1,
+        ///             "turmaId" :1
+        ///         }
+        /// </remarks>
+        /// <response code="201">Inclui o aluno na turma.</response>
+        /// <response code="204">Aluno ou turma não existe.</response>
+        /// <response code="400">Aluno ja cadastrado no curso.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         [HttpPost]
         public IActionResult Post(AlunoTurma alunosTurmas)
         {
-            _repo.Create(alunosTurmas);
-            return Ok(alunosTurmas);
+            try
+            {
+                var aluno = _repoAluno.FindById(alunosTurmas.AlunoId);
+                var turma = _repoTurma.FindById(alunosTurmas.TurmaId);
+                if (aluno == null || turma == null) return NoContent();
+
+                var resposta =_repo.CreateAlunoTurma(alunosTurmas);
+
+                if (resposta) 
+                    return Created($"https://localhost:44308/api/alunoturma/{alunosTurmas.AlunoId}", alunosTurmas);
+
+                return BadRequest("Aluno ja está cadastrado nesta turma");
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
-        // PUT api/<AlunoTurmaController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(AlunoTurma alunosTurmas)
+
+        //[HttpPut("{id}")]
+        //public IActionResult Put(AlunoTurma alunosTurmas)
+        //{
+        //    var resposta = _repo.Update(alunosTurmas);
+
+        //    if (resposta == null)
+        //        return BadRequest("AlunoTurma não encontrado.");
+
+        //    return Ok("AlunoTurma alterado com sucesso.");
+
+        //}
+
+
+        /// <summary>
+        /// Excluir o Aluno do curso pelo Id do aluno.
+        /// </summary>
+        /// <param name="alunoId"></param>
+        /// <param name="turmaId"></param>
+        /// <remarks>
+        /// Exemplo de request:
+        ///     Delete /api/alunoturma/1        
+        ///       
+        /// </remarks>
+        /// <response code="200">O aluno foi removido com sucesso.</response>
+        /// <response code="204">Aluno não foi encontrado.</response>
+        /// <response code="400">Aluno existe, porém não está cadastrado neste curso.</response>
+        /// <response code="500">Exceção.</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
+        [HttpDelete("{alunoId}/{turmaId}")]
+        public IActionResult Delete(int alunoId, int turmaId)
         {
-            var resposta = _repo.Update(alunosTurmas);
+            try
+            {
+                var aluno = _repoAluno.FindById(alunoId);
+                var turma = _repoTurma.FindById(turmaId);
+                if (aluno == null || turma == null) return NoContent();                
 
-            if (resposta == null)
-                return BadRequest("AlunoTurma não encontrado.");
+                var resposta = _repo.RemoveAlunoTurma(alunoId, turmaId);
 
-            return Ok("AlunoTurma alterado com sucesso.");
-        }
+                if(resposta)
+                    return Ok("Aluno foi removido da turma.");
 
-        // DELETE api/<AlunoTurmaController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var alunosTurmas = _repo.FindById(id);
+                return BadRequest("O aluno existe, porém não está cadastrado neste curso.");
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+            }
 
-            if (alunosTurmas == null) return BadRequest("O AlunoTurma não foi encontrado");
 
-            _repo.Remove(alunosTurmas.Id);
-
-            return Ok("AlunoTurma deletado com sucesso.");
+            
         }
     }
 }

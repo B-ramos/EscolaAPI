@@ -111,7 +111,7 @@ namespace AulaConexao.API.Controllers
             try
             {
                 _repo.Create(professor);
-                return Created("", professor);
+                return Created($"https://localhost:44308/api/professor/{professor.Id}", professor);
             }
             catch (System.Exception)
             {

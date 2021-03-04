@@ -1,11 +1,8 @@
 ﻿using AulaConexao.API.Dto;
 using AulaConexao.Data.Interface;
-using AulaConexao.Data.Repository;
 using AulaConexao.Domain.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Models.AulaConexao.Domain;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace AulaConexao.API.Controllers

@@ -86,7 +86,8 @@
             Exemplo de request:
                 Get /api/AlunoTurma
             </remarks>
-            <response code="200">Retorna a lista de alunos.</response>
+            <response code="200">Retorna uma lista com aluno e o curso que ele está participando.</response>
+            <response code="204">Lista vazia.</response>
             <response code="500">Exceção.</response>
         </member>
         <member name="M:AulaConexao.API.Controllers.AlunoTurmaController.Get(System.Int32)">
@@ -99,6 +100,42 @@
                 Get /api/AlunoTurma/1
             </remarks>
             <response code="200">Retorna as turmas referente ao Id do aluno.</response>
+            <response code="204">Aluno não existe.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.AlunoTurmaController.Post(AulaConexao.Domain.Models.AlunoTurma)">
+            <summary>
+            Inclui o aluno no curso.
+            </summary>
+            /// /// <param name="alunosTurmas">Identificador do Professor.</param>
+            <remarks>
+            Exemplo de request:
+                Post /api/aluno
+                
+                    {
+                        "alunoID" : 1,
+                        "turmaId" :1
+                    }
+            </remarks>
+            <response code="201">Inclui o aluno na turma.</response>
+            <response code="204">Aluno ou turma não existe.</response>
+            <response code="400">Aluno ja cadastrado no curso.</response>
+            <response code="500">Exceção.</response>
+        </member>
+        <member name="M:AulaConexao.API.Controllers.AlunoTurmaController.Delete(System.Int32,System.Int32)">
+            <summary>
+            Excluir o Aluno do curso pelo Id do aluno.
+            </summary>
+            <param name="alunoId"></param>
+            <param name="turmaId"></param>
+            <remarks>
+            Exemplo de request:
+                Delete /api/alunoturma/1        
+                  
+            </remarks>
+            <response code="200">O aluno foi removido com sucesso.</response>
+            <response code="204">Aluno não foi encontrado.</response>
+            <response code="400">Aluno existe, porém não está cadastrado neste curso.</response>
             <response code="500">Exceção.</response>
         </member>
         <member name="M:AulaConexao.API.Controllers.ProfessorController.Get">
