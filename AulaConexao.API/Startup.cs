@@ -38,6 +38,7 @@ namespace AulaConexao.API
             services.AddScoped<IProfessorRepository, ProfessorRepository>();
             services.AddScoped<ITurmaProfessorRepository, TurmaProfessorRepository>();
             services.AddScoped<ITurmaRepository, TurmaRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -76,3 +76,4 @@ C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaCon
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\obj\Debug\netcoreapp3.1\AulaConexao.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\AulaConexao.API.xml
 C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\obj\Debug\netcoreapp3.1\AulaConexao.API.xml
+C:\Users\bramo\Área de Trabalho\Desenvolvimento\CampinasTech\Exercicios\AulaConexao.API\AulaConexao.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

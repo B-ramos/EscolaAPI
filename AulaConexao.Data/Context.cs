@@ -12,6 +12,7 @@ namespace AulaConexao.Data
         public DbSet<Turma> Turmas { get; set; }
         public DbSet<TurmaProfessor> TurmasProfessores { get; set; }
         public DbSet<AlunoTurma> AlunosTurmas { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         public Context(DbContextOptions options) : base(options) { }
 
@@ -22,6 +23,7 @@ namespace AulaConexao.Data
             modelBuilder.ApplyConfiguration(new TurmaMap());
             modelBuilder.ApplyConfiguration(new TurmaProfessorMap());
             modelBuilder.ApplyConfiguration(new AlunoTurmaMap());
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
 
             base.OnModelCreating(modelBuilder);
         }

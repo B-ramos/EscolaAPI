@@ -12,15 +12,15 @@ namespace AulaConexao.API.Controllers
     [ApiController]
     public class AlunoController : ControllerBase
     {
-        private readonly IAlunoRepository __repo;
-        //private readonly ILogger __logger;
+        private readonly IAlunoRepository _repo;
+        private readonly ILogger _logger;
         private readonly IMapper _mapper;
 
         public AlunoController(IAlunoRepository repo, IMapper mapper, ILogger<AlunoController> logger)
         {
-            __repo = repo;
+            _repo = repo;
             _mapper = mapper;
-            //__logger = logger;
+            _logger = logger;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace AulaConexao.API.Controllers
         {
             try
             {
-                var alunos = __repo.FindAll();
+                var alunos = _repo.FindAll();
 
                 if (alunos.Count < 1)
                     return NoContent();
@@ -74,7 +74,7 @@ namespace AulaConexao.API.Controllers
         {            
             try
             {
-                var aluno = __repo.FindById(id);
+                var aluno = _repo.FindById(id);
                 if (aluno == null)
                     return NoContent();
 
@@ -107,7 +107,7 @@ namespace AulaConexao.API.Controllers
         {            
             try
             {
-                __repo.Create(aluno);
+                _repo.Create(aluno);
                 return Created($"https://localhost:44308/api/aluno/{aluno.Id}",aluno);
             }
             catch (System.Exception)
@@ -141,7 +141,7 @@ namespace AulaConexao.API.Controllers
         {
             try
             {
-                var resposta = __repo.Update(aluno);
+                var resposta = _repo.Update(aluno);
 
                 if (resposta == null)
                     return NoContent();
@@ -174,11 +174,11 @@ namespace AulaConexao.API.Controllers
         {            
             try
             {
-                var aluno = __repo.FindById(id);
+                var aluno = _repo.FindById(id);
 
                 if (aluno == null) return NoContent();
 
-                __repo.Remove(aluno.Id);
+                _repo.Remove(aluno.Id);
 
                 return Ok("Aluno deletado com sucesso.");
             }

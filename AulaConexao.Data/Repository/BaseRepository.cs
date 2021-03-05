@@ -10,7 +10,7 @@ namespace SalaoCampinasTech.Data.Repository
     public class BaseRepository<T> : IBaseRepository<T> where T : class, BaseEntity
     {
         protected readonly Context _context;
-        private DbSet<T> dataset;
+        private readonly DbSet<T> dataset;
 
         public BaseRepository(Context context)
         {

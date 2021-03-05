@@ -311,5 +311,22 @@
             <response code="200">Retorna as turmas referente ao Id do aluno.</response>
             <response code="500">Exceção.</response>
         </member>
+        <member name="M:AulaConexao.API.Controllers.UsuarioController.Post(AulaConexao.Domain.Models.Usuario)">
+            <summary>
+            Cria um novo Usuario e retorna o mesmo.
+            </summary>
+            <remarks>
+            Exemplo de request:
+                Post /api/usuario
+                
+                    {
+                        "nome" : "nomeUsuario",
+                        "senha" : "123456"
+                    }
+            </remarks>
+            <response code="201">Cria um novo usuario e retorna o mesmo.</response>
+            <response code="400">Nome ou Senha estão nulos.</response>
+            <response code="500">Exceção.</response>
+        </member>
     </members>
 </doc>
