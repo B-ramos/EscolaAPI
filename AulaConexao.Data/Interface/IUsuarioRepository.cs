@@ -7,5 +7,6 @@ namespace AulaConexao.Data.Interface
 {
     public interface IUsuarioRepository : IBaseRepository<Usuario>
     {
+        public Usuario SelecionarPorNomeESenha(string nome, string senha);
     }
 }

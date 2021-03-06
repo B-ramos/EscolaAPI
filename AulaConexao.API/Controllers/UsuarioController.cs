@@ -17,7 +17,6 @@ namespace AulaConexao.API.Controllers
             _repo = repo ?? throw new ArgumentNullException("UsuarioRepository não pode ser null");            
         }
 
-
         /// <summary>
         /// Cria um novo Usuario e retorna o mesmo.
         /// </summary>

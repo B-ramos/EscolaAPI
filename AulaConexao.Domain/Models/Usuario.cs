@@ -8,5 +8,7 @@ namespace AulaConexao.Domain.Models
         public string Nome { get; set; }
         public string Senha { get; set; }
         public string Token { get; set; }
+
+        public string Perfil { get; set; }
     }
 }

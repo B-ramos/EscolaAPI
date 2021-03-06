@@ -21,8 +21,11 @@ namespace AulaConexao.Data.Map
                 .IsRequired();
 
             builder.Property(x => x.Token)
-               .HasColumnType("varchar(MAX)"); 
-          
+               .HasColumnType("varchar(MAX)");
+
+            builder.Property(x => x.Perfil)
+               .HasColumnType("varchar(100)");
+
         }
     }
 }

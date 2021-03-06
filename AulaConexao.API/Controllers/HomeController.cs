@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AulaConexao.API.Services;
+using AulaConexao.Data.Interface;
+using AulaConexao.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AulaConexao.API.Controllers
 {
@@ -11,5 +9,35 @@ namespace AulaConexao.API.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
+        private readonly IUsuarioRepository _repo;
+
+        public HomeController(IUsuarioRepository repo)
+        {
+            _repo = repo;
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public IActionResult Login([FromBody] Usuario usuarioDto)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(usuarioDto.Nome) || string.IsNullOrEmpty(usuarioDto.Senha))
+                    return BadRequest("Nome e/ou senha não devem ser nulas");
+
+                var usuario = _repo.SelecionarPorNomeESenha(usuarioDto.Nome, usuarioDto.Senha);
+                if (usuario == null)
+                    return NotFound("Nome e/ou senha inválido(s)");
+
+                var token = TokenService.GerarToken(usuario);
+
+                return Ok(token);
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500);
+        
+            }           
+        }
     }
 }

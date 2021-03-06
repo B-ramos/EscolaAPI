@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AulaConexao.API
 {
-    public class Configuracoes
+    public static class Configuracoes
     {
+        // Secret tem que ter no mínimo 16 caracteres
+        public static String Secret = "testeAuthentication";
     }
 }

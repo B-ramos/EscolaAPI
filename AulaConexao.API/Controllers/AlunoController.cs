@@ -1,6 +1,7 @@
 ﻿using AulaConexao.API.Dto;
 using AulaConexao.Data.Interface;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models.AulaConexao.Domain;
@@ -10,6 +11,7 @@ namespace AulaConexao.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AlunoController : ControllerBase
     {
         private readonly IAlunoRepository _repo;
@@ -36,6 +38,8 @@ namespace AulaConexao.API.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(500)]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Professor")]
         [HttpGet]
         public IActionResult Get()
         {
